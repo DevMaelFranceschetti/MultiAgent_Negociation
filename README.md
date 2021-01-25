@@ -9,5 +9,6 @@ What we can currently do with the code :
  - computing a partial frequency matrix from the passed proposals of other agents
  - **running the Fictitious Play algorithm**
  - computing the average regret vector of an agent at each negociation step
+ - **running the Regret Matching algorithm**
 
-Requirements : numpy only.
+Requirements : numpy, time (for execution time comparison)
