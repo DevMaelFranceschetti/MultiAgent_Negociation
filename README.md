@@ -10,5 +10,6 @@ What we can currently do with the code :
  - **running the Fictitious Play algorithm**
  - computing the average regret vector of an agent at each negociation step
  - **running the Regret Matching algorithm**
+ - **running the Spatial Adaptative Play algorithm**
 
 Requirements : numpy, time (for execution time comparison)
