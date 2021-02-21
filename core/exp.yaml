@@ -1,0 +1,31 @@
+Experience1:
+  nb_steps: 1000 #Nombre d'étapes au total
+  nb_sync: 100 #Les agents ont le même nombre de steps toutes les 100 étapes 
+  tasks: 3
+  Type1: #Un type de vehicules
+    number: 3 #Combien de véhicules de ce type on met
+    type: RegretMatching #Le nom de type
+    spec: #Des spécificités liés au type
+      intertia: 0.1
+      fadding: 0.2
+  Type2:
+    number: 2
+    type: FictiousPlay
+  Type3:
+    number: 3
+    type: Random
+
+Experience2:
+  tasks: 3
+  Type1:
+    number: 3
+    type: RegretMatching
+    spec: 
+      intertia: 0.1
+      fadding: 0.2
+  Type2:
+    number: 2
+    type: FictiousPlay
+  Type3:
+    number: 1
+    type: Random
