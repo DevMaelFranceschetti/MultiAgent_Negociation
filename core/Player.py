@@ -27,6 +27,21 @@ class Player():
                 self.env.play(self.id, self.select_action(),verbose=verbose)
                 self.observe()
         return worker
+
+    def bestAnswer(self, other_moves):
+        t = other_moves[:self.id] + [-1]+ other_moves[self.id+1:] + [self.id]
+        t[self.id] = slice(None, None, None)
+        print (self.env.utility[t])
+        return np.argmax(self.env.utility[t]), np.max(self.env.utility[t])
+
+    def computeBestMove(self):
+        L = []
+        for agent in self.env.hist:
+            if(agent != self.id):
+                L.append(self.env.hist[agent])
+        a,v = self.bestAnswer(L)
+        print(f"Best action {a} with a value of {v}")
+        return a,v 
     
     def observe(self):
         pass
@@ -54,7 +69,54 @@ class BRPlayer(Player):
 
 
 
-class FPPlayer(Player):
+class FPPlayer1(Player):
+        
     
     def select_action(self):
         return np.argmax(self.env.getExpectationPlayer(self.id))
+
+class FPPlayer(Player):
+
+    def getExpectedUtility(self):
+        fmatrix = self.env.getFrequencyMatrixL()
+        t = len(self.env.players)*[slice(None, None, None)]+[self.id]
+        it = np.nditer(self.env.utility[t], flags=['multi_index'])
+        act = np.zeros(self.env.tasks.shape)
+        for x in it:
+            p = 1
+            for n,a in  enumerate(it.multi_index):
+                p = p  * (fmatrix[n][a])
+            mya = it.multi_index[self.id]
+            act[mya] = act[mya] + p*x
+        return act
+        
+    
+    def select_action(self):
+        a = self.getExpectedUtility()
+        logging.debug('Expected utility  '+str(a))
+        return np.argmax(a)
+
+
+class RMPlayer(Player):
+
+    def __init__(self, environnement, id):
+        super().__init__( environnement, id)
+        self.cumulated_reget = np.zeros(self.env.tasks.shape)
+        self.step = 0
+        pass
+
+    def observe(self):
+        pred_ac = self.env.getPrecedentActionsMatrix().T
+        for i in range(self.step, pred_ac.shape[0]):
+            act = pred_ac[i]
+            self.cumulated_reget[act[self.id]] = self.cumulated_reget[act[self.id]] + self.getRegret(act)
+        self.step = pred_ac.shape[0]
+
+    def getRegret(self, actions):
+        moves_v = list(actions[:self.id]) + [slice(None, None, None)] + list(actions[self.id+1:])+ [self.id]
+        u = self.env.utility[moves_v]
+        return np.max(u) - u[actions[self.id]]
+    
+    
+    def select_action(self):
+        return np.argmin(self.cumulated_reget)

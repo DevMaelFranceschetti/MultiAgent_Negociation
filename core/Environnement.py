@@ -76,6 +76,38 @@ class Environnement:
             v.append(np.array(self.getFrequenciesPlayer(player)))
         v = np.array(v)
         return v
+
+    def getFrequencyMatrixL(self):
+        L = []
+        for agent in self.players:
+            arr = self.hist[agent]
+            tasks = self.tasks
+            freq = np.zeros(self.players.shape)
+            for t in tasks:
+                k = len(np.where(arr == t)[0])
+                freq[t] = k
+            L.append(freq / freq.sum())
+        L = np.array(L)
+        return L
+
+    def getPrecedentActionsMatrix(self):
+        min_s = np.inf
+        for agent in self.hist:
+            min_s = min(min_s, len(self.hist[agent]))
+        L = []
+        for agent in self.hist:
+            L.append(np.array(self.hist[agent][:min_s]))
+        return np.array(L)
+
+
+
+
+    def getFrequency(self):
+        v = {}
+        for player in self.players:
+            v[player] = (np.array(self.getFrequenciesPlayer(player)))
+        return v
+    
     
     def getExpectationPlayer(self, player):
         return computePartialFrequencyMatrix(self.utility, self.getFreqencyMatrix(), list(self.players), list(self.tasks), player)
