@@ -114,7 +114,7 @@ class RegretMatchingPlayer(Player):
 
     def getRegret(self, actions):
         moves_v = list(actions[:self.id]) + [slice(None, None, None)] + list(actions[self.id+1:])+ [self.id]
-        u = self.env.utility[moves_v]
+        u = self.env.utility[tuple(moves_v)]
         return np.max(u) - u[actions[self.id]]
     
     def select_action(self):
@@ -144,6 +144,7 @@ class SpatialFictiousPlayPlayer(Player):
 
     def getExpectedUtility(self):
         fmatrix = self.env.getFrequencyMatrixL()
+        print(fmatrix.shape)
         t = len(self.env.players)*[slice(None, None, None)]+[self.id]
         it = np.nditer(self.env.utility[t], flags=['multi_index'])
         act = np.zeros(self.env.tasks.shape)

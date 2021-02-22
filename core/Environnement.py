@@ -42,14 +42,14 @@ class Environnement:
     def getUnilateralChanges(self, player):
         new_all = list(self.allocation)
         new_all[player] = slice(None)
-        unilateral_changes = self.utility[new_all]
+        unilateral_changes = self.utility[tuple(new_all)]
         return unilateral_changes
     
     def getMultiLateralChanges(self, players):
         new_all = list(self.allocation)
         for player in players:
             new_all[player] = slice(None)
-        multilateral_changes = self.utility[new_all]
+        multilateral_changes = self.utility[tuple(new_all)]
         return multilateral_changes
 
     def getBestAction(self,vehicle):
@@ -82,7 +82,7 @@ class Environnement:
         for agent in self.players:
             arr = self.hist[agent]
             tasks = self.tasks
-            freq = np.zeros(self.players.shape)
+            freq = np.zeros((len(tasks)))
             for t in tasks:
                 k = len(np.where(arr == t)[0])
                 freq[t] = k
