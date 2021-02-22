@@ -1,4 +1,4 @@
-from utils import * 
+from utils import *
 import numpy as np
 import threading
 import time
@@ -7,7 +7,7 @@ import logging
 
 class Environnement:
 
-    def __init__(self, n_tasks, n_players, utilities = None):
+    def __init__(self, n_tasks, n_players, utilities = np.zeros(1)):
         """
         utilities : Matrix(int) the utility matrix of dimension nb_tasks^nb_vehicles * nb_vehicles
         n_players : Number of players
@@ -19,12 +19,18 @@ class Environnement:
 
         self.played_moves = 0
 
-        if(utilities != None):
-            self.utility = utilities
-        else:
+        if(utilities.all() == 0):
             shapes = getUtilityShape(n_players,n_tasks)
             self.utility = np.random.randint(0,10,shapes)
-        
+        else:
+            self.utility = utilities
+
+        # if(utilities != None):
+        #     self.utility = utilities
+        # else:
+        #     shapes = getUtilityShape(n_players,n_tasks)
+        #     self.utility = np.random.randint(0,10,shapes)
+
         self.hist = {}
         for player in self.players:
             self.hist[player] = list(self.tasks)
@@ -44,7 +50,7 @@ class Environnement:
         new_all[player] = slice(None)
         unilateral_changes = self.utility[tuple(new_all)]
         return unilateral_changes
-    
+
     def getMultiLateralChanges(self, players):
         new_all = list(self.allocation)
         for player in players:
@@ -55,7 +61,7 @@ class Environnement:
     def getBestAction(self,vehicle):
         ch = self.getUnilateralChanges(vehicle)[:,vehicle]
         return ch.max(), ch.argmax()
-    
+
     def getBestActionPerPlayer(self):
         L = []
         better_action = []
@@ -65,7 +71,7 @@ class Environnement:
         L = np.array(L)
         better_action = np.array(better_action)
         return L, better_action
-    
+
 
     def getFrequenciesPlayer(self,player):
         return computeFrequency(self.hist[int(player)], self.tasks)
@@ -107,15 +113,15 @@ class Environnement:
         for player in self.players:
             v[player] = (np.array(self.getFrequenciesPlayer(player)))
         return v
-    
-    
+
+
     def getExpectationPlayer(self, player):
         return computePartialFrequencyMatrix(self.utility, self.getFreqencyMatrix(), list(self.players), list(self.tasks), player)
 
-    
+
     def is_EN_v(self):
         return (self.getBestActionPerPlayer()[0] == self.utility[tuple(self.allocation)]).any()
-    
+
     def is_EN(self):
         """ Check if the current allocation is a Nash Equilibrium or not
     Returns :
@@ -134,8 +140,8 @@ class Environnement:
                     if utility > current_utility : # changing to another task gives more utility -> Not NE
                         return (False, v)
         return (True, -1)
-    
-    
+
+
     def play(self, player, action, verbose=False):
         self.played_moves = self.played_moves + 1
         self.lock.acquire()

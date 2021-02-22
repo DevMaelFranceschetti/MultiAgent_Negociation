@@ -242,7 +242,7 @@ def getRandomUt(nb_vehicles, nb_tasks, ut_range):
     """
     min_ut, max_ut = ut_range
 
-    shapes = getShape(nb_vehicles,nb_tasks+1)
+    shapes = getUtilityShape(nb_vehicles,nb_tasks+1)
 
     utilities = np.random.randint(min_ut,max_ut,shapes)
 
@@ -273,7 +273,7 @@ def getEqualySharedUt(nb_vehicles, nb_tasks, ut_range):
 
     min_ut, max_ut = ut_range
 
-    shapes = getShape(nb_vehicles,nb_tasks+1)
+    shapes = getUtilityShape(nb_vehicles,nb_tasks+1)
 
     utilities = np.random.randint(min_ut,max_ut,shapes)
 
