@@ -255,3 +255,46 @@ def getRandomUt(nb_vehicles, nb_tasks, ut_range):
                 utilities[a][i] = 0
 
     return utilities
+
+def getEqualySharedUt(nb_vehicles, nb_tasks, ut_range):
+    """ Compute the utility matrix with random value in utility range given and an null task
+    according to an equaly shared utility for agents sharing the same target
+
+    Parameters :
+        nb_vehicles : int, the number of vehicles
+        nb_tasks : int, the number of tasks
+        ut_range : Tuple(int) the range of values that utility can take
+
+    Returns :
+        Matrix(Int)
+        The utility matrix produced
+
+    """
+
+    min_ut, max_ut = ut_range
+
+    shapes = getShape(nb_vehicles,nb_tasks+1)
+
+    utilities = np.random.randint(min_ut,max_ut,shapes)
+
+    alloc_dim = np.zeros([nb_tasks+1]*(nb_vehicles))
+    allAlloc = [x for x,_ in np.ndenumerate(alloc_dim)]
+
+    for a in allAlloc:
+        sharedUt = {}
+
+        for vi in range(utilities[a].size):
+            if a[vi] not in sharedUt:
+                sharedUt[a[vi]] = [utilities[a][vi], 1]
+            else:
+                sharedUt[a[vi]][0] += utilities[a][vi]
+                sharedUt[a[vi]][1] += 1
+
+        for i in range(utilities[a].size):
+            if a[i] == 0:
+                utilities[a][i] = 0
+            else:
+                utilities[a][i] = sharedUt[a[vi]][0]/sharedUt[a[vi]][1]
+
+
+    return utilities
