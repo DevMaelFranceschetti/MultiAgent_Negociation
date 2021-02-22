@@ -226,3 +226,32 @@ def getEnvy(utilities, allocation, vehicles):
         return False
 
     return True
+
+def getRandomUt(nb_vehicles, nb_tasks, ut_range):
+    """ Compute the utility matrix with random value in utility range given and an null task
+
+    Parameters :
+        nb_vehicles : int, the number of vehicles
+        nb_tasks : int, the number of tasks
+        ut_range : Tuple(int) the range of values that utility can take
+
+    Returns :
+        Matrix(Int)
+        The utility matrix produced
+
+    """
+    min_ut, max_ut = ut_range
+
+    shapes = getShape(nb_vehicles,nb_tasks+1)
+
+    utilities = np.random.randint(min_ut,max_ut,shapes)
+
+    alloc_dim = np.zeros([nb_tasks+1]*(nb_vehicles))
+    allAlloc = [x for x,_ in np.ndenumerate(alloc_dim)]
+
+    for a in allAlloc:
+        for i in range(utilities[a].size):
+            if a[i] == 0:
+                utilities[a][i] = 0
+
+    return utilities
