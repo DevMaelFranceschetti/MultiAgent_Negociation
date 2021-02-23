@@ -1,0 +1,375 @@
+Experience1:
+  Type1:
+    number: 3
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  nb_sync: 100
+  tasks: 4
+Experience10:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 2
+    type: Random
+  nb_sync: 100
+  tasks: 4
+Experience11:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: Random
+  Type3:
+    number: 1
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience12:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: Random
+  Type3:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience13:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 2
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience14:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: BestResponse
+  Type3:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience15:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 2
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience16:
+  Type1:
+    number: 3
+    type: FictitiousPlay
+  nb_sync: 100
+  tasks: 4
+Experience17:
+  Type1:
+    number: 2
+    type: FictitiousPlay
+  Type2:
+    number: 1
+    type: Random
+  nb_sync: 100
+  tasks: 4
+Experience18:
+  Type1:
+    number: 2
+    type: FictitiousPlay
+  Type2:
+    number: 1
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience19:
+  Type1:
+    number: 2
+    type: FictitiousPlay
+  Type2:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience2:
+  Type1:
+    number: 2
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: FictitiousPlay
+  nb_sync: 100
+  tasks: 4
+Experience20:
+  Type1:
+    number: 1
+    type: FictitiousPlay
+  Type2:
+    number: 2
+    type: Random
+  nb_sync: 100
+  tasks: 4
+Experience21:
+  Type1:
+    number: 1
+    type: FictitiousPlay
+  Type2:
+    number: 1
+    type: Random
+  Type3:
+    number: 1
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience22:
+  Type1:
+    number: 1
+    type: FictitiousPlay
+  Type2:
+    number: 1
+    type: Random
+  Type3:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience23:
+  Type1:
+    number: 1
+    type: FictitiousPlay
+  Type2:
+    number: 2
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience24:
+  Type1:
+    number: 1
+    type: FictitiousPlay
+  Type2:
+    number: 1
+    type: BestResponse
+  Type3:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience25:
+  Type1:
+    number: 1
+    type: FictitiousPlay
+  Type2:
+    number: 2
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience26:
+  Type1:
+    number: 3
+    type: Random
+  nb_sync: 100
+  tasks: 4
+Experience27:
+  Type1:
+    number: 2
+    type: Random
+  Type2:
+    number: 1
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience28:
+  Type1:
+    number: 2
+    type: Random
+  Type2:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience29:
+  Type1:
+    number: 1
+    type: Random
+  Type2:
+    number: 2
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience3:
+  Type1:
+    number: 2
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: Random
+  nb_sync: 100
+  tasks: 4
+Experience30:
+  Type1:
+    number: 1
+    type: Random
+  Type2:
+    number: 1
+    type: BestResponse
+  Type3:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience31:
+  Type1:
+    number: 1
+    type: Random
+  Type2:
+    number: 2
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience32:
+  Type1:
+    number: 3
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience33:
+  Type1:
+    number: 2
+    type: BestResponse
+  Type2:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience34:
+  Type1:
+    number: 1
+    type: BestResponse
+  Type2:
+    number: 2
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience35:
+  Type1:
+    number: 3
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience4:
+  Type1:
+    number: 2
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience5:
+  Type1:
+    number: 2
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
+Experience6:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 2
+    type: FictitiousPlay
+  nb_sync: 100
+  tasks: 4
+Experience7:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: FictitiousPlay
+  Type3:
+    number: 1
+    type: Random
+  nb_sync: 100
+  tasks: 4
+Experience8:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: FictitiousPlay
+  Type3:
+    number: 1
+    type: BestResponse
+  nb_sync: 100
+  tasks: 4
+Experience9:
+  Type1:
+    number: 1
+    spec:
+      fadding: 0.2
+      inertia: 0.1
+    type: RegretMatching
+  Type2:
+    number: 1
+    type: FictitiousPlay
+  Type3:
+    number: 1
+    type: SpatialAdaptative
+  nb_sync: 100
+  tasks: 4
