@@ -13,17 +13,21 @@ class Environnement:
         n_players : Number of players
         tasks : Number of tasks
         """
-        self.tasks = np.arange(n_tasks)
+
         self.players = np.arange(n_players)
         self.lock = threading.Lock()
 
         self.played_moves = 0
 
         if(utilities.all() == 0):
-            shapes = getUtilityShape(n_players,n_tasks)
-            self.utility = np.random.randint(0,10,shapes)
+            # shapes = getUtilityShape(n_players,n_tasks)
+            # self.utility = np.random.randint(0,10,shapes)
+            self.utility = getRandomUt(n_players, n_tasks, (0,10))
+
         else:
             self.utility = utilities
+
+        self.tasks = np.arange(n_tasks+1) #Add the null tasks
 
         # if(utilities != None):
         #     self.utility = utilities
