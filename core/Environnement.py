@@ -35,6 +35,8 @@ class Environnement:
         for player in self.players:
             self.hist[player] = list(self.tasks)
         self.allocation = np.zeros(n_players).astype(int)
+        self.global_opt = self.utility.sum(axis = len(self.players)).max()
+
 
 
     def getUtilityShape(self):

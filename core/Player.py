@@ -7,7 +7,7 @@ from Functions import *
 import random
 
 
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.ERROR,
                     format='[%(levelname)s] (%(threadName)-10s) %(message)s',
                     )
 
@@ -18,10 +18,14 @@ class Player():
     To use it you just have to redefind the observation and the action methods.
     """
 
-    def __init__(self, environnement, id):
+    def __init__(self, environnement, id, verbose = False):
         self.env = environnement
         self.id  = id
-        pass
+        self.verbose = verbose
+        if(not verbose):
+            logging.basicConfig(level=logging.ERROR,
+                    format='[%(levelname)s] (%(threadName)-10s) %(message)s',
+                    )
     
     def getWorkerFunction(self,steps, verbose = False):
         def worker():
@@ -167,7 +171,7 @@ class SpatialFictiousPlayPlayer(Player):
 
 class GeneralizedRegretMatchingPlayer(Player):
     
-    def __init__(self, environnement, id, func = softmax, fadding_factor = 0, inertia_factor = 0):
+    def __init__(self, environnement, id, func = softmax, fadding_factor = 0, inertia_factor = 0, verbose = False):
         super().__init__( environnement, id)
         self.cumulated_reget = np.zeros(self.env.tasks.shape)
         self.precedent_action = random.randint(0, len(self.env.tasks))
@@ -175,6 +179,7 @@ class GeneralizedRegretMatchingPlayer(Player):
         self.func = func
         self.fadding_factor = fadding_factor
         self.inertia_factor = inertia_factor
+        self.verbose = verbose
 
     def observe(self):
         pred_ac = self.env.getPrecedentActionsMatrix().T
@@ -202,7 +207,7 @@ class GeneralizedRegretMatchingPlayer(Player):
             logging.debug("INERTIA ! ")
             return self.precedent_action
 
-        if(self.id == 2):
+        if(self.id == 2 and self.verbose):
             logging.debug('Regret  '+str(self.cumulated_reget))
             logging.debug('norm_regret  '+str(norm_regret))
             logging.debug('Distribution  '+str(ch))

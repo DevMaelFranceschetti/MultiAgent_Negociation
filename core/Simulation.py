@@ -7,7 +7,7 @@ from Player import *
 from utils import *
 from Functions import *
 
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.ERROR,
                     format='[%(levelname)s] (%(threadName)) : %(message)s',
                     )
 
